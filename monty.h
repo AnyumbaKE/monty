@@ -71,7 +71,7 @@ void mod(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 
-void opcode(stack_t **stack, char *str, unsigned int line_cnt);
+void opcode(stack_t **stack, char *str, unsigned int line_number);
 
 int is_digit(char *string);
 int isnumber(char *str);
