@@ -50,3 +50,34 @@ typedef struct global_variable
 	int push_arg;
 	char *buffer;
 } global_var;
+
+stack_t *add_node(stack_t **stack, const int n);
+stack_t *queue_node(stack_t **stack, const int n);
+void free_stack(stack_t *stack);
+size_t print_stack(const stack_t *stack);
+
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
+void sub(stack_t **stack, unsigned int line_number);
+void div(stack_t **stack, unsigned int line_number);
+void mul(stack_t **stack, unsigned int line_number);
+void mod(stack_t **stack, unsigned int line_number);
+
+void pchar(stack_t **stack, unsigned int line_number);
+void pstr(stack_t **stack, unsigned int line_number);
+
+void opcode(stack_t **stack, char *str, unsigned int line_cnt);
+
+int is_digit(char *string);
+int isnumber(char *str);
+void free_dlistint(stack_t *head);
+void dobfree(stack_t **stack);
+void dobfree2(stack_t **stack);
+int _isalpha(int c);
+
+#endif /* MONTY_H */
