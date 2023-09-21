@@ -1,26 +1,33 @@
 #include "monty.h"
 
 /**
- * push - push int to a stack
- * @stack: linked lists for monty stack
- * @line_number: number of line opcode occurs on
+ * push - push element into the stack
+ * @stack: stack given by main
+ * @line_number: amount of lines
+ * Return: void
  */
-void push(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
+void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *top;
-	(void)line_number;
+	char *n = global.argument;
 
-	top = malloc(sizeof(stack_t));
-	if (top == NULL)
+	if ((is_digit(n)) == 0)
 	{
-		fprintf(stderr, "Error: malloc failed\n");
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	top->n = var_global.push_arg;
-	top->next = *stack;
-	top->prev = NULL;
-	if (*stack != NULL)
-		(*stack)->prev = top;
-	*stack = top;
+	if (global.data_struct == 1)
+	{
+		if (!add_node(stack, atoi(global.argument)))
+		{
+			exit(EXIT_FAILURE);
+		}
+	}
+	else
+	{
+		if (!queue_node(stack, atoi(global.argument)))
+		{
+			exit(EXIT_FAILURE);
+		}
+	}
 }
