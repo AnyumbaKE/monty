@@ -4,25 +4,28 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-#define INSTRUCTIONS
-{
-	{"pchar", pchar},
-	{"rotl", rotl},
-	{"rotr", rotr},
-	{"pstr", pstr},
-	{"push", push},
-	{"pall", pall},
-	{"pint", pint},
-	{"swap", swap},
-	{"nop", nop},
-	{"pop", pop},
-	{"add", _add},
-	{"sub", _sub},
-	{"mod", mod},
-	{"mul", _mul},
-	{"div", _div},
-	{NULL, NULL};
-}
+#define INSTRUCTIONS              \
+	{                           \
+		{"push", push},       \
+		    {"pall", pall},   \
+		    {"pint", pint},   \
+		    {"pop", pop},     \
+		    {"swap", swap},   \
+		    {"nop", nop},     \
+		    {"div", _div},    \
+		    {"mul", _mul},    \
+		    {"add", _add},    \
+		    {"sub", _sub},    \
+		    {"mod", mod},     \
+		    {"pchar", pchar}, \
+		    {"pstr", pstr},   \
+		    {"rotl", rotl},   \
+		    {"rotr", rotr},   \
+		{                     \
+			NULL, NULL      \
+		}                     \
+	}
+
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
