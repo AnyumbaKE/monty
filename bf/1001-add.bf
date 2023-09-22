@@ -1,7 +1,7 @@
 ,                           ;read character and store it in p1
 ------------------------------------------------ ;return ascii to Dec
 >                           ;move pointer to p2 (second byte)
-,                           ;read character, store it in p2
+,                           ;read character and store it in p2
 ------------------------------------------------ ;return ascii to Dec
 [                	            ; enter loop
 	-                           ; decrement p2
