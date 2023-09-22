@@ -7,7 +7,6 @@
  * swap -  swaps data from top to previous
  * @stack: stack given by main
  * @line_cnt: amount of lines
- *
  * Return: void
  */
 void swap(stack_t **stack, unsigned int line_cnt)
