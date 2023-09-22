@@ -8,7 +8,6 @@
  * @stack: stack given by main
  * @str: string to compare
  * @line_cnt: amount of lines
- *
  * Return: nothing
  */
 void opcode(stack_t **stack, char *str, unsigned int line_cnt)
