@@ -1,13 +1,17 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include <string.h>
 #include "monty.h"
 
 /**
- * div - divides the next top value by the top value
+ * _div - divides the next top value by the top value
  * @stack: stack given by main
  * @line_number: line counter
  *
  * Return: void
  */
-void div(stack_t **stack, unsigned int line_number)
+void _div(stack_t **stack, unsigned int line_number)
 {
 	int result;
 
@@ -25,6 +29,6 @@ void div(stack_t **stack, unsigned int line_number)
 	}
 
 	result = ((*stack)->next->n) / ((*stack)->n);
-	pop(stack, line_cnt);
+	pop(stack, line_number);
 	(*stack)->n = result;
 }

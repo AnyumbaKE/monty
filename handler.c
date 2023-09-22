@@ -1,118 +1,86 @@
+#define  _POSIX_C_SOURCE 200809L
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 #include "monty.h"
 
+void file_error(char *argv);
+void error_usage(void);
+int status = 0;
+
 /**
- * queue_node - adds a node to a stack_t stack in queue_node
- * @stack: stack head
- * @n: number of the node
+ * main - entry point
+ * @argv: list of arguments passed to our program
+ * @argc: amount of args
  *
- * Return: newly created node, if memory allocation fails, the function will
- * return NULL.
+ * Return: nothing
  */
-stack_t *queue_node(stack_t **stack, const int n)
+int main(int argc, char **argv)
 {
-	stack_t *new = malloc(sizeof(stack_t));
-	stack_t *current = *stack;
+	FILE *file;
+	size_t buf_len = 0;
+	char *buffer = NULL;
+	char *str = NULL;
+	stack_t *stack = NULL;
+	unsigned int line_number = 1;
 
-	if (!new)
-	{
-		free(new);
-		return (NULL);
-	}
-	new->n = n;
+	global.data_struct = 1;
+	if (argc != 2)
+		error_usage();
 
-	if (!*stack)
-	{
-		new->next = NULL;
-		new->prev = NULL;
-		*stack = new;
-		return (new);
-	}
+	file = fopen(argv[1], "r");
 
-	while (current)
+	if (!file)
+		file_error(argv[1]);
+
+	while ((getline(&buffer, &buf_len, file)) != (-1))
 	{
-		if (!current->next)
-		{
-			new->next = NULL;
-			new->prev = current;
-			current->next = new;
+		if (status)
 			break;
-		}
-		current = current->next;
-	}
-
-	return (new);
-}
-
-/**
- * add_node - adds a node to the start of a stack_t stack
- * @stack: stack head
- * @n: number for the new node
- *
- * Return: newly created node, if creation fails, the
- * function will return NULL.
- */
-stack_t *add_node(stack_t **stack, const int n)
-{
-	stack_t *new = malloc(sizeof(stack_t));
-
-	if (!new)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		free(new);
-		return (NULL);
-	}
-	new->n = n;
-
-	new->next = *stack;
-	new->prev = NULL;
-	if (*stack)
-		(*stack)->prev = new;
-
-	*stack = new;
-
-	return (new);
-}
-
-/**
- * print_stack - prints the contents of a stack_t stack
- * @stack: stack head
- *
- * Return: number of elements of the list
- */
-size_t print_stack(const stack_t *stack)
-{
-	size_t c = 0;
-
-	while (stack)
-	{
-		printf("%d\n", stack->n);
-		stack = stack->next;
-		c++;
-	}
-
-	return (c);
-}
-
-/**
- * free_stack - frees a dlistint_t linked list
- * @stack: list head
- *
- * Return: void
- */
-void free_stack(stack_t *stack)
-{
-	stack_t *current = stack;
-	stack_t *next;
-
-	if (stack)
-	{
-		next = stack->next;
-		while (current)
+		if (*buffer == '\n')
 		{
-			free(current);
-			current = next;
-			if (next)
-				next = next->next;
+			line_number++;
+			continue;
 		}
+		str = strtok(buffer, " \t\n");
+		if (!str || *str == '#')
+		{
+			line_number++;
+			continue;
+		}
+		global.argument = strtok(NULL, " \t\n");
+		opcode(&stack, str, line_number);
+		line_number++;
 	}
+	free(buffer);
+	free_stack(stack);
+	fclose(file);
+	exit(EXIT_SUCCESS);
+}
+
+/**
+ * file_error - prints file error message and exits
+ * @argv: argv given by main()
+ *
+ * Desc: print msg if  not possible to open the file
+ * Return: nothing
+ */
+void file_error(char *argv)
+{
+	fprintf(stderr, "Error: Can't open file %s\n", argv);
+	exit(EXIT_FAILURE);
+}
+
+/**
+ * error_usage - prints usage message and exits
+ *
+ * Desc: if user does not give any file or more than
+ * one argument to your program
+ *
+ * Return: nothing
+ */
+void error_usage(void)
+{
+	fprintf(stderr, "USAGE: monty file\n");
+	exit(EXIT_FAILURE);
 }

@@ -1,9 +1,13 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include <string.h>
 #include "monty.h"
 
 /**
  * pchar - prints the int at the top of the stack as char
  * @stack: stack given by main
- * @line_number: amount of lines
+ * @line_numbe: amount of lines
  *
  * Return: void
  */

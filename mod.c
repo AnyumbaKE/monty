@@ -1,3 +1,7 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include <string.h>
 #include "monty.h"
 
 /**
@@ -25,6 +29,6 @@ void mod(stack_t **stack, unsigned int line_number)
 	}
 
 	result = ((*stack)->next->n) % ((*stack)->n);
-	pop(stack, line_cnt);
+	pop(stack, line_number);
 	(*stack)->n = result;
 }

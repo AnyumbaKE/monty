@@ -1,12 +1,12 @@
-#ifndef MONTY_H
-#define MONTY_H
+#ifndef _MONTY_H_
+#define _MONTY_H_
 
 #include <stddef.h>
 #include <stdlib.h>
 
 #define INSTRUCTIONS              \
 	{                           \
-		{"push", push},      \
+		{"push", push},       \
 		    {"pall", pall},   \
 		    {"pint", pint},   \
 		    {"pop", pop},     \
@@ -70,33 +70,27 @@ typedef struct help
 } help;
 help global;
 
-/* stack utility functions available in linked_list.c */
 stack_t *add_node(stack_t **stack, const int n);
 stack_t *queue_node(stack_t **stack, const int n);
 void free_stack(stack_t *stack);
 size_t print_stack(const stack_t *stack);
-
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
-void div(stack_t **stack, unsigned int line_number);
-void add(stack_t **stack, unsigned int line_number);
-void sub(stack_t **stack, unsigned int line_number);
-void mul(stack_t **stack, unsigned int line_number);
+void _div(stack_t **stack, unsigned int line_number);
+void _add(stack_t **stack, unsigned int line_number);
+void _sub(stack_t **stack, unsigned int line_number);
+void _mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
-void rotl(stack_t **stack, unsigned int line_number);
-void rotr(stack_t **stack, unsigned int line_number);
-char *parse_line(char *line, stack_t **stack, unsigned int line_number);
+void rotl(stack_t **stack, unsigned int line_count);
+void rotr(stack_t **stack, unsigned int line_count);
 void opcode(stack_t **stack, char *str, unsigned int line_number);
-void read_file(char *filename, stack_t **stack);
-int isalpha(int c);
 int is_digit(char *string);
 int isnumber(char *str);
 
-
-#endif /* MONTY_H */
+#endif

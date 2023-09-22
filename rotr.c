@@ -3,11 +3,11 @@
 /**
 * rotr - rotates the last node of a stack_t stack
 * @stack: stack head
-* @line_number: line count
+* @line_count: line count
 *
 * Return: void
 */
-void rotr(stack_t **stack, unsigned int line_number)
+void rotr(stack_t **stack, unsigned int line_count)
 {
 	stack_t *bottom;
 	stack_t *prev;
