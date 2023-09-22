@@ -1,6 +1,5 @@
 read int cell 1 and 2 
 >, >, <<
-
 convert from ascii to values
 +++++ +
 [
