@@ -1,5 +1,4 @@
 bf code to print School and add a new line
-
 +++++ +++++		cell 0 loop counter set to 10
 [
   >+++++ +++		cell 1 @ 80
