@@ -6,15 +6,15 @@
 /**
  * pint - print the value at the top of the stack
  * @stack: stack given by main in start.c
- * @line_number: amount of lines
+ * @line_cnt: amount of lines
  *
  * Return: void
  */
-void pint(stack_t **stack, unsigned int line_number)
+void pint(stack_t **stack, unsigned int line_cnt)
 {
 	if (!stack || !(*stack))
 	{
-		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_cnt);
 		exit(EXIT_FAILURE);
 
 	}

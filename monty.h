@@ -1,5 +1,5 @@
-#ifndef _MONTY_H_
-#define _MONTY_H_
+#ifndef MONTY_H
+#define MONTY_H
 
 #include <stddef.h>
 #include <stdlib.h>
@@ -70,26 +70,32 @@ typedef struct help
 } help;
 help global;
 
+/* stack utility functions available in linked_list.c */
 stack_t *add_node(stack_t **stack, const int n);
 stack_t *queue_node(stack_t **stack, const int n);
 void free_stack(stack_t *stack);
 size_t print_stack(const stack_t *stack);
-void push(stack_t **stack, unsigned int line_number);
-void pall(stack_t **stack, unsigned int line_number);
-void pint(stack_t **stack, unsigned int line_number);
-void swap(stack_t **stack, unsigned int line_number);
-void pop(stack_t **stack, unsigned int line_number);
-void nop(stack_t **stack, unsigned int line_number);
-void _div(stack_t **stack, unsigned int line_number);
-void _add(stack_t **stack, unsigned int line_number);
-void _sub(stack_t **stack, unsigned int line_number);
-void _mul(stack_t **stack, unsigned int line_number);
-void mod(stack_t **stack, unsigned int line_number);
-void pchar(stack_t **stack, unsigned int line_number);
-void pstr(stack_t **stack, unsigned int line_number);
+
+void push(stack_t **stack, unsigned int line_cnt);
+void pall(stack_t **stack, unsigned int line_cnt);
+void pint(stack_t **stack, unsigned int line_cnt);
+void swap(stack_t **stack, unsigned int line_cnt);
+void pop(stack_t **stack, unsigned int line_cnt);
+void nop(stack_t **stack, unsigned int line_cnt);
+
+void _div(stack_t **stack, unsigned int line_cnt);
+void _add(stack_t **stack, unsigned int line_cnt);
+void _sub(stack_t **stack, unsigned int line_cnt);
+void _mul(stack_t **stack, unsigned int line_cnt);
+void mod(stack_t **stack, unsigned int line_cnt);
+
+void pchar(stack_t **stack, unsigned int line_cnt);
+void pstr(stack_t **stack, unsigned int line_cnt);
 void rotl(stack_t **stack, unsigned int line_count);
 void rotr(stack_t **stack, unsigned int line_count);
-void opcode(stack_t **stack, char *str, unsigned int line_number);
+
+void opcode(stack_t **stack, char *str, unsigned int line_cnt);
+
 int is_digit(char *string);
 int isnumber(char *str);
 
