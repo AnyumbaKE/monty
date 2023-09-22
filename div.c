@@ -8,7 +8,6 @@
  * _div - divides the next top value by the top value
  * @stack: stack given by main
  * @line_cnt: line counter
- *
  * Return: void
  */
 void _div(stack_t **stack, unsigned int line_cnt)
