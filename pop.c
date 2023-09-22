@@ -8,7 +8,6 @@
 * pop - pops the very top element of the stack
 * @stack: stack given by main in start.c
 * @line_cnt: line number for error messages
-*
 * Return: void
 */
 void pop(stack_t **stack, unsigned int line_cnt)
