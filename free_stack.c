@@ -5,7 +5,6 @@
 /**
  * free_stack - frees a dlistint_t linked list
  * @stack: list head
- *
  * Return: void
  */
 void free_stack(stack_t *stack)
