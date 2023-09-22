@@ -6,7 +6,6 @@
  * add_node - adds a node to the start of a stack_t stack
  * @stack: stack head
  * @n: number for the new node
- *
  * Return: newly created node, if creation fails, the
  * function will return NULL.
  */
