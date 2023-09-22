@@ -1,4 +1,4 @@
-,                           ;read character and store it in p1
+,                           ;read the character and store it in p1
 ------------------------------------------------ ;return ascii to Dec
 >                           ;move pointer to p2 (second byte)
 ,                           ;read character, store it in p2
